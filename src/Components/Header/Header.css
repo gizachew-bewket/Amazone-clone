@@ -1,0 +1,125 @@
+/* General header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #131921; /* Amazon dark blue */
+  color: white;
+  padding: 10px;
+}
+
+/* Logo */
+.header__logo {
+  width: 100px;
+  object-fit: contain;
+  margin-right: 20px;
+}
+
+/* Left: location */
+.header__left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header__location {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.header__small {
+  font-size: 12px;
+  color: #ccc;
+}
+
+.header__bold {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* Middle: search */
+.header__search {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 20px;
+}
+
+.header__searchDropdown {
+  padding: 8px;
+  border: none;
+  outline: none;
+  background-color: #f3f3f3;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.header__search input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  outline: none;
+}
+
+.header__searchButton {
+  background-color: #febd69; /* Amazon orange */
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+/* Right section */
+.header__right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header__language {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.header__flag {
+  width: 20px;
+  height: auto;
+}
+
+.header__account a,
+.header__orders a,
+.header__cart a {
+  text-decoration: none;
+  color: white;
+}
+
+.header__cart {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.header__cartCount {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background: #f08804;
+  color: black;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 50%;
+  font-size: 10px;
+}
+.search:focus-within {
+  border: 2px solid #febd69; /* Amazon orange */
+  box-shadow: 0 0 5px #febd69;
+}
+.common_style:hover{
+    border: 1px solid white;
+    border-radius: 3px;
+}

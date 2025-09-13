@@ -1,0 +1,77 @@
+import React from "react";
+import "./Header.css";
+import logo from "./Header-images/amazon_PNG11.png";
+import { MdLocationOn } from "react-icons/md";
+import { FaSearch, FaShoppingCart } from "react-icons/fa";
+import Lowerheader from "./Lowerheader";
+
+const Header = () => {
+  return (
+    <>
+      <header className="header">
+        {/* Left section */}
+        <div className="header__left ">
+          <a href="/" className="common_style">
+            <img src={logo} alt="Amazon Logo" className="header__logo" />
+          </a>
+          <div className="header__location common_style">
+            <MdLocationOn />
+            <div>
+              <p className="header__small">Deliver to</p>
+              <p className="header__bold">Ethiopia</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Middle search bar */}
+        <div className="header__search search">
+          <select className="header__searchDropdown common_style">
+            <option value="all">All</option>
+          </select>
+          <input type="text" placeholder="Search products..." />
+          <button className="header__searchButton ">
+            <FaSearch />
+          </button>
+        </div>
+
+        {/* Right section */}
+        <div className="header__right">
+          <div className="header__language common_style">
+            <img
+              src="https://flagcdn.com/w20/fr.png"
+              alt="French"
+              className="header__flag"
+            />
+            <select>
+              <option value="en">EN</option>
+            </select>
+          </div>
+
+          <div className="header__account common_style">
+            <a href="/">
+              <p className="header__small">Hello, sign in</p>
+              <p className="header__bold">Account & Lists</p>
+            </a>
+          </div>
+
+          <div className="header__orders common_style">
+            <a href="/">
+              <p className="header__small">Returns</p>
+              <p className="header__bold">& Orders</p>
+            </a>
+          </div>
+
+          <div className="header__cart common_style">
+            <a href="/">
+              <FaShoppingCart />
+              <span className="header__cartCount">0</span>
+            </a>
+          </div>
+        </div>
+      </header>
+      <Lowerheader />
+    </>
+  );
+};
+
+export default Header;

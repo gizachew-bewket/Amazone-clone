@@ -1,0 +1,33 @@
+.lowerHeader {
+  background-color: #232f3e; /* Amazon dark blue */
+  color: white;
+  padding: 10px 20px;
+}
+
+.lowerHeaderList {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.lowerHeaderItem {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.lowerHeaderItem:hover {
+  border: 1px solid white;
+  padding: 5px 10px;
+  border-radius: 2px;
+}
+
+.lowerHeaderIcon {
+  font-size: 20px;
+}
