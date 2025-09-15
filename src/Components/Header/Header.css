@@ -123,3 +123,12 @@
     border: 1px solid white;
     border-radius: 3px;
 }
+@media screen and (max-width: 576px){
+.header{
+  display: flex;
+  flex-direction: column !important;
+  height: auto;
+}
+}
+
+
