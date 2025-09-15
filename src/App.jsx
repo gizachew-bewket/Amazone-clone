@@ -3,6 +3,8 @@ import { useState } from 'react'
 // import viteLogo from '/vite.svg'
 import './App.css'
 import Header from './Components/Header/Header'
+import Carousel from './Components/Carousel/Carousel'
+import Catagory from './Components/Catagory/Catagory'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -10,6 +12,8 @@ function App() {
   return (
     <>
       <Header />
+      <Carousel />
+      <Catagory />
      
     </>
   )
