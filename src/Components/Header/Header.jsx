@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Header.css";
 import logo from "./Header-images/amazon_PNG11.png";
 import { MdLocationOn } from "react-icons/md";
@@ -11,9 +12,9 @@ const Header = () => {
       <header className="header">
         {/* Left section */}
         <div className="header__left ">
-          <a href="/" className="common_style">
+          <Link to="/" className="common_style">
             <img src={logo} alt="Amazon Logo" className="header__logo" />
-          </a>
+          </Link>
           <div className="header__location common_style">
             <MdLocationOn />
             <div>
@@ -55,17 +56,17 @@ const Header = () => {
           </div>
 
           <div className="header__orders common_style">
-            <a href="/">
+            <Link to="/order">
               <p className="header__small">Returns</p>
               <p className="header__bold">& Orders</p>
-            </a>
+            </Link>
           </div>
 
           <div className="header__cart common_style">
-            <a href="/">
+            <Link to="/cart">
               <FaShoppingCart />
               <span className="header__cartCount">0</span>
-            </a>
+            </Link>
           </div>
         </div>
       </header>

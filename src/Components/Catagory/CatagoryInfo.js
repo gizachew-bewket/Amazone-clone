@@ -6,22 +6,22 @@ import img4 from "./images/electronics.jpg";
 export const CatagoryInfo = [
   {
     title: "Electronics",
-    name: "Electronics",
+    name: "electronics",
     imglink: img4,
   },
   {
     title: "Women's Fashion",
-    name: "Women'sFashion",
+    name: "women's clothing",
     imglink: img3,
   },
   {
-    title: "Men's Fashion",
-    name: "Men'sFashion",
+    title: "men's clothing",
+    name: "men's clothing",
     imglink: img2,
   },
   {
     title: "Jewellery",
-    name: "Jewellery",
+    name: "jewelery",
     imglink: img1,
   },
 ];
