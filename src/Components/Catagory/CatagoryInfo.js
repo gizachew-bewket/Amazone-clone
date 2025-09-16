@@ -10,7 +10,7 @@ export const CatagoryInfo = [
     imglink: img4,
   },
   {
-    title: "Fashion",
+    title: "Women's Fashion",
     name: "Women'sFashion",
     imglink: img3,
   },

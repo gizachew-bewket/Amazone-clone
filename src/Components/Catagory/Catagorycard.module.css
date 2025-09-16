@@ -41,3 +41,19 @@
   gap: 20px;
   place-items: center;
 }
+/*  Responsive Breakpoints */
+@media (max-width: 1024px) {
+  .catagorySection {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .catagorySection {
+    grid-template-columns: 1fr;
+  }
+
+  .cardContainer {
+    max-width: 90%; 
+  }
+}
