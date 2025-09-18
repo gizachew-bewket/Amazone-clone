@@ -10,7 +10,7 @@ import Productdetail from "./Pages/Productdetail/Productdetail";
 
 const Routing = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/Amazone-clone">
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/auth" element={<Signup />} />
