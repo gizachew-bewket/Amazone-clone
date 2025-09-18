@@ -1,8 +1,6 @@
 import { ActionType } from "./ActionType";
-
 export const initialState = {
   basket: [],
-  // user: null,
 };
 
 export const reducer = (state, action) => {
