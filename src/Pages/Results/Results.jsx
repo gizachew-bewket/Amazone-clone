@@ -4,6 +4,7 @@ import axios from "axios";
 import Layout from "../../Components/Layout/Layout";
 import { Baseurl } from "../../Api/Endpoints";
 import style from "./Results.module.css";
+// import ProductCard from "../../Components/Product/ProductCard";
 import ProductCard from "../../Components/Product/ProductCard";
 
 const Results = () => {
@@ -30,7 +31,10 @@ const Results = () => {
         <div className={style.products_container}>
           {results.length > 0 ? (
             results.map((product) => (
-              <ProductCard key={product.id} product={product} />
+              <ProductCard key={product.id} 
+              product={product}
+              renderDetail={false} 
+              renderAdd={true}/>
             ))
           ) : (
             <p style={{ padding: "30px" }}>No products found.</p>

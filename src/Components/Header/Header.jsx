@@ -1,14 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
 import logo from "./Header-images/amazon_PNG11.png";
 import { MdLocationOn } from "react-icons/md";
 import { FaSearch, FaShoppingCart } from "react-icons/fa";
 import Lowerheader from "./Lowerheader";
+import { DataContext } from "../DataProvider/DataProvider.jsx";
 
 const Header = () => {
+
+const [{basket},dispatch]= useContext(DataContext);
+
+
   return (
-    <>
+    <section className="fixed__header">
       <header className="header">
         {/* Left section */}
         <div className="header__left ">
@@ -65,13 +70,13 @@ const Header = () => {
           <div className="header__cart common_style">
             <Link to="/cart">
               <FaShoppingCart />
-              <span className="header__cartCount">0</span>
+              <span className="header__cartCount">{basket.length}</span>
             </Link>
           </div>
         </div>
       </header>
       <Lowerheader />
-    </>
+    </section>
   );
 };
 
