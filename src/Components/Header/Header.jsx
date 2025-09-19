@@ -57,10 +57,10 @@ const totalitem = basket.reduce((amount, item) => {
           </div>
 
           <div className="header__account common_style">
-            <a href="/">
+            <Link to="/auth">
               <p className="header__small">Hello, sign in</p>
               <p className="header__bold">Account & Lists</p>
-            </a>
+            </Link>
           </div>
 
           <div className="header__orders common_style">
