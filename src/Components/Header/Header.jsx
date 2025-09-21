@@ -6,10 +6,11 @@ import { MdLocationOn } from "react-icons/md";
 import { FaSearch, FaShoppingCart } from "react-icons/fa";
 import Lowerheader from "./Lowerheader";
 import { DataContext } from "../DataProvider/DataProvider.jsx";
+import { auth } from "../../Utility/firebase.js";
 
 const Header = () => {
 
-const [{basket},dispatch]= useContext(DataContext);
+const [{ user, basket }, dispatch] = useContext(DataContext);
 const totalitem = basket.reduce((amount, item) => {
   return  item.amount + amount;
 }, 0);
@@ -57,9 +58,21 @@ const totalitem = basket.reduce((amount, item) => {
           </div>
 
           <div className="header__account common_style">
-            <Link to="/auth">
-              <p className="header__small">Hello, sign in</p>
-              <p className="header__bold">Account & Lists</p>
+            <Link to={!user && "/auth"}>
+              <div>
+                {user ? (
+                  <>
+                    {" "}
+                    <p>Hello, {user?.email?.split("@")[0]}</p>
+                    <p className="header__bold" onClick={()=>auth.signOut()}>sign Out</p>
+                  </>
+                ) : (
+                  <>
+                    <p className="header__small"> Hello, sign in</p>
+                    <p className="header__bold">Account & Lists</p>
+                  </>
+                )}
+              </div>
             </Link>
           </div>
 

@@ -1,11 +1,72 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import style from "./Signup.module.css";
+import { auth } from "../../Utility/firebase";
+import { useState, useContext } from "react";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { DataContext } from "../../Components//DataProvider/DataProvider";
+import { ActionType } from "../../Utility/ActionType";
+import { ClipLoader } from "react-spinners";
 const Auth = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState({
+    signin: false,
+    signup: false,
+  });
+
+  const [{ user }, dispatch] = useContext(DataContext);
+  const navigate=useNavigate();
+  const authHandler = async (e) => {
+    e.preventDefault();
+    console.log(e.target.name);
+    if (e.target.name === "signin") {
+      setLoading({ ...loading, signin: true });
+      // firebase auth sign in
+      try {
+        const result = await signInWithEmailAndPassword(auth, email, password);
+
+        dispatch({
+          type: ActionType.SET_USER,
+          user: result.user,
+        });
+        setLoading({ ...loading, signin: false });
+        navigate('/')
+      } catch (error) {
+        setError(error.message);
+        setLoading({ ...loading, signin: false });
+      }
+    } else {
+      // firebase auth sign up
+      setLoading({ ...loading, signup: true });
+      try {
+        const result = await createUserWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+
+        dispatch({
+          type: ActionType.SET_USER,
+          user: result.user,
+        });
+        setLoading({ ...loading, signup: false });
+        navigate('/')
+      } catch (error) {
+        setError(error.message);
+        setLoading({ ...loading, signup: false });
+      }
+    }
+  };
+
   return (
     <section className={style.signup}>
       {/* Logo */}
-      <Link>
+      <Link to={"/"}>
         <img
           src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg"
           alt=""
@@ -18,14 +79,37 @@ const Auth = () => {
         <form action="">
           <div>
             <label htmlFor="email">Email</label>
-            <input type="email" name="email" id="email" />
+            <input
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              type="email"
+              name="email"
+              id="email"
+            />
           </div>
 
           <div>
             <label htmlFor="password">Password</label>
-            <input type="password" name="password" id="password" />
+            <input
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              type="password"
+              name="password"
+              id="password"
+            />
           </div>
-          <button type="submit" className={style.login_btn}>Sign In</button>
+          <button
+            type="submit"
+            name="signin"
+            onClick={authHandler}
+            className={style.login_btn}
+          >
+            {loading.signin ? (
+              <ClipLoader size={20} color="white" />
+            ) : (
+              "Sign In "
+            )}
+          </button>
           {/* agreement */}
           <p>
             By signing-in you agree to Amazon's Conditions of Use & Sale. Please
@@ -33,7 +117,19 @@ const Auth = () => {
             Ads Notice.
           </p>
           {/* create account button  */}
-          <button className={style.create_account_btn}>Create your Amazon Account</button>
+          <button
+            type="submit"
+            onClick={authHandler}
+            name="create_account"
+            className={style.create_account_btn}
+          >
+            {loading.signup ? (
+              <ClipLoader size={20} color="black" />
+            ) : (
+              " Create your Amazon Account"
+            )}
+          </button>
+          {error && <p className={style.error_msg}>{error}</p>}
         </form>
       </div>
     </section>
