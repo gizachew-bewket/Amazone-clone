@@ -1,5 +1,5 @@
 import React from "react";
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import style from "./Signup.module.css";
 import { auth } from "../../Utility/firebase";
 import { useState, useContext } from "react";
@@ -20,7 +20,11 @@ const Auth = () => {
   });
 
   const [{ user }, dispatch] = useContext(DataContext);
-  const navigate=useNavigate();
+  const navigate = useNavigate();
+
+  const navstatedata = useLocation();
+  console.log(navstatedata);
+
   const authHandler = async (e) => {
     e.preventDefault();
     console.log(e.target.name);
@@ -35,7 +39,7 @@ const Auth = () => {
           user: result.user,
         });
         setLoading({ ...loading, signin: false });
-        navigate('/')
+        navigate(navstatedata?.state?.redirect || "/");
       } catch (error) {
         setError(error.message);
         setLoading({ ...loading, signin: false });
@@ -55,7 +59,7 @@ const Auth = () => {
           user: result.user,
         });
         setLoading({ ...loading, signup: false });
-        navigate('/')
+        navigate(navstatedata?.state?.redirect || "/");
       } catch (error) {
         setError(error.message);
         setLoading({ ...loading, signup: false });
@@ -76,6 +80,18 @@ const Auth = () => {
       {/* Form */}
       <div className={style.form_container}>
         <h1>sign in</h1>
+        {navstatedata?.state?.msg && (
+          <small
+            style={{
+              padding: "5px",
+              textAlign: "center",
+              color: "red",
+              fontWeight: "bold",
+            }}
+          >
+            {navstatedata?.state?.msg}
+          </small>
+        )}
         <form action="">
           <div>
             <label htmlFor="email">Email</label>
