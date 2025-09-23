@@ -1,4 +1,3 @@
-import React from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import style from "./Signup.module.css";
 import { auth } from "../../Utility/firebase";
@@ -132,7 +131,7 @@ const Auth = () => {
             see our Privacy Notice, our Cookies Notice and our Interest-Based
             Ads Notice.
           </p>
-          {/* create account button  */}
+          {/* create account button and add an event */}
           <button
             type="submit"
             onClick={authHandler}
