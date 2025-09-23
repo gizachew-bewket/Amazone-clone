@@ -16,7 +16,7 @@ const stripePromise = loadStripe(
 );
 const Routing = () => {
   return (
-    <BrowserRouter basename="/Amazone-clone">
+    <BrowserRouter basename="/">
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/auth" element={<Auth />} />
