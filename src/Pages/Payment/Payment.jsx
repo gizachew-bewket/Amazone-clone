@@ -6,7 +6,7 @@ import { DataContext } from "../../Components/DataProvider/DataProvider";
 import ProductCard from "../../Components/Product/ProductCard";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import CurrencyFormat from "../../Components/CurrencyFormat/CurrencyFormat";
-import { axiosInstance } from "../../Api/Axios";
+import { axiosInstance } from "../../Api/axios";
 import { ClipLoader } from "react-spinners";
 import { db } from "../../Utility/firebase";
 import { doc, setDoc, collection } from "firebase/firestore";
@@ -14,7 +14,7 @@ import { useNavigate } from "react-router";
 import { ActionType } from "../../Utility/ActionType";
 
 const Payment = () => {
-  const [{ user, basket },dispatch] = useContext(DataContext);
+  const [{ user, basket }, dispatch] = useContext(DataContext);
   console.log(user);
 
   const total = basket.reduce((amount, item) => {
@@ -58,9 +58,10 @@ const Payment = () => {
           basket: basket,
           amount: paymentIntent.amount,
           created: paymentIntent.created,
-        });
-//Empty the basket
-  dispatch({type:ActionType.EMPTY_BASKET})
+        }
+      );
+      //Empty the basket
+      dispatch({ type: ActionType.EMPTY_BASKET });
 
       setpaymentProcessing(false);
       navigate("/Order", { state: { msg: "You have a new order" } });
